@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    #navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    #navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    #navbar ul li {
+      color: #555;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    #navbar ul li a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #navbar ul li:hover {
+      color: #007bff;
+    }
+
+    /* About Section */
+
+    #about {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #e8f5e9;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .about-content h1 {
+      font-size: 3rem;
+      color: #007bff;
+    }
+
+    .about-content h2 {
+      font-size: 2rem;
+      color: #555;
+    }
+
+    .about-profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #007bff;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #technology, #projects, #resources, #contact {
+      min-height: 50vh;
+      margin-top: 20px;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s ease;
+    }
+
+    #scrollToTop:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      padding: 20px;
+      background: #f1f1f1;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <div class="about-content">
+      <div class="about-profile">
+        <img src="WhatsApp Image 2024-12-29 at 6.40.30 AM.jpeg" alt="Profile Picture">
+      </div>
+      <h1>Hello! I am Ebtesham</h1>
+      <h2>I am a...</h2>
+      <h2 id="typing"></h2>
+    </div>
+  </section>
+
+  <section id="technology">
+    <h2>Technology</h2>
+    <p>Details about the technologies I work with.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ol>
+      <li>A login profile</li>
+    </ol>
+  </section>
+
+  <section id="resources">
+    <h2>Resources</h2>
+    <ol>
+      <li ><a style="text-decoration: none;" href="https://www.w3schools.com/">W3 Schools</a></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Feel free to reach out to me anytime!</p>
+  </section>
+
+  <button id="scrollToTop">&uarr;</button>
+
+  <footer>
+    <p>&copy; 2024 Ebtesham. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const typingElement = document.getElementById('typing');
+    const typingText = ['Web Developer'];
+    let typingIndex = 0;
+    let charIndex = 0;
+
+    function typeText() {
+      if (charIndex < typingText[typingIndex].length) {
+        typingElement.textContent += typingText[typingIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, 100);
+      } else {
+        setTimeout(deleteText, 1000);
+      }
+    }
+
+    function deleteText() {
+      if (charIndex > 0) {
+        typingElement.textContent = typingElement.textContent.slice(0, -1);
+        charIndex--;
+        setTimeout(deleteText, 100);
+      } else {
+        typingIndex = (typingIndex + 1) % typingText.length;
+        setTimeout(typeText, 500);
+      }
+    }
+
+    typeText();
+
+    const scrollToTopButton = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        scrollToTopButton.style.display = 'block';
+      } else {
+        scrollToTopButton.style.display = 'none';
+      }
+    });
+
+    scrollToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
